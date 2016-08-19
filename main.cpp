@@ -55,8 +55,8 @@ int main(int argc, char* argv[]) {
   ApricotVector ab = ApricotVector("[-2.155, -9.353, -9.473]");
   ApricotVector projection = av.ProjectedOn(ab);
   cout << "\n\n\n" << projection;
-  ab.sub(projection);
-  cout << "\n\n\n" << ab;
+  av.sub(projection);
+  cout << "\n\n\n" << av;
 
 
 
