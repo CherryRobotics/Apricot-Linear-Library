@@ -34,4 +34,5 @@ class ApricotVector {
     double getAngleBetween(ApricotVector av, bool inDegrees);
   private:
     std::vector<double> vec;
+    bool tolEquals(double value, double checknum, double tol=0.0000000001)
 };

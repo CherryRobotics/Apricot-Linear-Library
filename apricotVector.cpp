@@ -51,11 +51,11 @@ ApricotVector::ApricotVector(std::string s) {
       int endpos = s.find_first_of(',', startpos);
       if (endpos == -1) {
         allfound = true;
-        std::cout << s.substr(startpos, s.length()-1-startpos) << std::endl;
+        // std::cout << s.substr(startpos, s.length()-1-startpos) << std::endl;
         vec.push_back(std::stod(s.substr(startpos, s.length()-1-startpos)));
       } else {
         vec.push_back(std::stod(s.substr(startpos, endpos-startpos)));
-        std::cout << s.substr(startpos, endpos-startpos) << std::endl;
+        // std::cout << s.substr(startpos, endpos-startpos) << std::endl;
       }
       // std::cout << "Startpos: " << startpos << "\nEndpos: " << endpos << std::endl;
       startpos = endpos+1;
