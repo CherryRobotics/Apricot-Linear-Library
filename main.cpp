@@ -5,7 +5,6 @@
   *
   **/
 #include "apricotMatrix.h"
-// #include "apricotVector.h"
 #include <iostream>
 #include <string>
 #include <sstream>

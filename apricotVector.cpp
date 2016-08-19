@@ -121,23 +121,18 @@ void ApricotVector::scale(double scalar) {
 
 bool ApricotVector::ParallelTo(ApricotVector av) {
   double ang = this->getAngleBetween(av, true);
-  // TODO: This is terrible. I hate my life and everything in it. must find easier way to work with
-  // high preicison numbers..
   if ((ang < 0.000000009 && ang > -0.000000009) || (ang < 180.000009 && ang > 179.0000009))
     return true;
   return false;
 }
 bool ApricotVector::OrthoganalTo(ApricotVector av) {
   double ang = this->DotProduct(av);
-  // TODO: Again, working with high preicison numbers, this kind of thing isn't
-  // really ideal..
   if (ang < 0.000000009 && ang > -0.000000009)
     return true;
   return false;
 }
 ApricotVector ApricotVector::ProjectedOn(ApricotVector av) {
   // V|| = (V DOT Bnorm)Bnorm
-  // TODO: Confirm this isn't destructive..
   av.normalize();
   ApricotVector aq = *this;
   av.scale(aq.DotProduct(av));
