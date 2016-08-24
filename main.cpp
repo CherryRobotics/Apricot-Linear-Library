@@ -49,11 +49,8 @@ void passed(std::string testname, bool passed) {
 
 
 int main(int argc, char* argv[]) {
-  ApricotVector av = ApricotVector("[3.039, 1.879]");
-  cout << av.ProjectedOn(ApricotVector("[0.825, 2.036]"));
-  av = ApricotVector("[-9.88, -3.264, -8.159]");
-  ApricotVector ab = ApricotVector("[-2.155, -9.353, -9.473]");
-  ApricotVector projection = av.ProjectedOn(ab);
+  ApricotVector av = ApricotVector("[3.009, -6.172, 3.692, -2.51]");
+  ApricotVector projection = av.ProjectedOn(ApricotVector("[6.404, -9.144, 2.759, 8.718]"));
   cout << "\n\n\n" << projection;
   av.sub(projection);
   cout << "\n\n\n" << av;
