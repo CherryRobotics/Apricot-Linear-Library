@@ -183,3 +183,35 @@ double ApricotVector::getAngleBetween(ApricotVector av, bool inDegrees) {
     return -1;
   }
 }
+
+ApricotVector ApricotVector::CrossProduct(ApricotVector av) {
+  std::vector<double> v = av.GetVector();
+  if (v.size() == vec.size() && (v.size() == 3 || v.size() == 2)) {
+    std::vector<double> cross;
+    if (v.size() == 3) {
+      cross.push_back(vec.at(1)*v.at(2) - v.at(1)*vec.at(2));
+      cross.push_back(-1*(vec.at(0)*v.at(2) - v.at(0)*vec.at(2)));
+      cross.push_back(vec.at(0)*v.at(1) - v.at(0)*vec.at(1));
+    } else if (v.size() == 2) {
+      cross.push_back(vec.at(1)*0 - v.at(1)*0);
+      cross.push_back(-1*(vec.at(0)*0 - v.at(0)*0));
+      cross.push_back(vec.at(0)*v.at(1) - v.at(0)*vec.at(1));
+    }
+    return ApricotVector(cross);
+  } else {
+    std::cout << "Invalid vector sizes, unable to grab cross product. Check your dimensions!";
+    return ApricotVector("[-1, -1, -1]");
+  }
+}
+double ApricotVector::GetParallelogramBetween(ApricotVector av) {
+  ApricotVector cross = this->CrossProduct(av);
+  std::vector<double> v = cross.GetVector();
+  double area = 0;
+  for (unsigned int i = 0; i < v.size(); i++) {
+    area += pow(v.at(i), 2);
+  }
+  return sqrt(area);
+}
+double ApricotVector::GetTriangleBetween(ApricotVector av) {
+  return this->GetParallelogramBetween(av)/2;
+}
