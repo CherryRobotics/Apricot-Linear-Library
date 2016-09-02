@@ -7,7 +7,9 @@ class ApricotLine {
     ApricotLine(ApricotVector av);
     ApricotLine(std::vector<double> v);
     bool ParallelTo(ApricotLine al);
-    bool ParallelTo(std::vector<double> v;)
+    bool ParallelTo(std::vector<double> v);
+    bool LineEqualTo(ApricotLine al);
+    bool LineEqualTo(std::vector<double> v);
   private:
     ApricotVector natVec; // Natural Vector
 }
