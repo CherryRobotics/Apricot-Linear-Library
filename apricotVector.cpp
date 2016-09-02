@@ -1,8 +1,9 @@
 #include "apricotVector.h"
 
 ApricotVector::ApricotVector(std::vector<double> v) {
- vec = v;
+  vec = v;
 }
+
 ApricotVector::ApricotVector(int n, ...) {
   // TODO: Make this function more safe. currently very dangerous :c
   va_list arguments;
