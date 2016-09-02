@@ -21,14 +21,7 @@ class ApricotVector {
     bool OrthoganalTo(ApricotVector av);
     ApricotVector ProjectedOn(ApricotVector av);
     std::vector<double> GetVector() const;
-    friend std::ostream &operator<<(std::ostream &output, const ApricotVector &A) {
-      // Default accuracy is 3 due to fixed && setprecision
-      std::vector<double> v = A.GetVector();
-      for (unsigned int i = 0; i < v.size(); i++) {
-        output << "|" << std::fixed << std::setprecision(3) <<  v.at(i) << "|" << std::endl;
-      }
-      return output;
-    }
+    friend std::ostream &operator<<(std::ostream &, const ApricotVector &);
     double GetMagnitude();
     double DotProduct(ApricotVector av);
     double getAngleBetween(ApricotVector av, bool inDegrees);
