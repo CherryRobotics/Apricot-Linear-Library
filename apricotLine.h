@@ -1,9 +1,17 @@
 #include "apricotVector.h"
-#include "apricotLine.h"
+#include <vector>
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+
+#ifndef APRICOTLINE_H
+#define APRICOTLINE_H
 
 
 class ApricotLine {
   public:
+    ApricotLine();
     ApricotLine(ApricotVector NaturalVector, double konstant);
     bool ParallelTo(ApricotLine al);
     bool LineEqualTo(ApricotLine al);
@@ -14,8 +22,15 @@ class ApricotLine {
     // my normal method of "-1" error vector won't work since
     // -1, -1 could be a legitimate intersection..  :c sadlyf.
     ApricotVector ComputeIntersectionTo(ApricotLine al); 
+    friend std::ostream &operator<<(std::ostream &, const ApricotLine &);
+    ApricotVector GetNaturalVector() const;
+    double GetEquationConstant() const;
+    static unsigned int GetFirstNonZeroIndex(ApricotLine al);
   private:
     ApricotVector natVec; // Natural Vector
-    ApricotVector baseVec // Basepoint Vector
+    ApricotVector baseVec; // Basepoint Vector
+    double konstant_;
     ApricotVector CalculuateBasePoint();
-}
+};
+
+#endif

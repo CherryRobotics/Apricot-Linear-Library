@@ -3,6 +3,9 @@
 #include "apricotVector.h"
 #include <string>
 
+#ifndef APRICOTMATRIX_H
+#define APRICOTMATRIX_H
+
 class ApricotMatrix {
 public:
   ApricotMatrix(std::string s);
@@ -14,3 +17,4 @@ public:
 private:
    std::vector<ApricotVector> mat;
 };
+#endif

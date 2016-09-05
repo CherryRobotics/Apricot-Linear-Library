@@ -1,7 +1,9 @@
 #include "apricotVector.h"
 
 using namespace std;
-
+ApricotVector::ApricotVector() {
+  
+}
 ApricotVector::ApricotVector(std::vector<double> v) {
   vec = v;
 }

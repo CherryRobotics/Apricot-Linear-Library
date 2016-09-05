@@ -5,6 +5,8 @@
   *
   **/
 #include "apricotMatrix.h"
+#include "apricotLine.h"
+#include "apricotVector.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -49,8 +51,10 @@ void passed(std::string testname, bool passed) {
 
 
 int main(int argc, char* argv[]) {
-  ApricotMatrix am = ApricotMatrix("[[1, 0, -2], [-1, -4, 5], [1, 1, 1]]");
-  cout << am << "\n\n\n";
+  ApricotLine al = ApricotLine(ApricotVector("[3, -2]"), 1);
+  cout << al;
+  al = ApricotLine(ApricotVector("[-6, 4]"), 0);
+  cout << al;
 
 
 

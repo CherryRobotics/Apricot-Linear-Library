@@ -5,8 +5,12 @@
 #include <cmath>
 #include <iomanip>
 
+#ifndef APRICOTVECTOR_H
+#define APRICOTVECTOR_H
+
 class ApricotVector {
   public:
+    ApricotVector(); // Empty constructor for argument purposes.
     ApricotVector(std::vector<double> v);
     ApricotVector(int n, ...);
     ApricotVector(std::string s);
@@ -32,3 +36,5 @@ class ApricotVector {
     std::vector<double> vec;
     // bool tolEquals(double value, double checknum, double tol=0.0000000001)
 };
+
+#endif
