@@ -1,8 +1,4 @@
-ApricotLine::ApricotLine(ApricotVector av) {
-  
-}
-
-ApricotLine::ApricotLine(std::vector<double> v) {
+ApricotLine::ApricotLine(ApricotVector NaturalVector, double konstant) {
   
 }
 
@@ -10,14 +6,14 @@ bool ApricotLine::ParallelTo(ApricotLine al) {
   
 }
 
-bool ApricotLine::ParallelTo(std::vector<double> v) {
-  
-}
-
 bool ApricotLine::LineEqualTo(ApricotLine al) {
   
 }
 
-bool ApricotLine::LineEqualTo(std::vector<double> v) {
+ApricotVector ApricotLine::ComputeIntersectionTo(ApricotLine al) {
+  
+}
+
+ApricotVector CalculuateBasePoint() {
   
 }
