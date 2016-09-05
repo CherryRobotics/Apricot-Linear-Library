@@ -49,13 +49,8 @@ void passed(std::string testname, bool passed) {
 
 
 int main(int argc, char* argv[]) {
-  ApricotVector av = ApricotVector("[8.462, 7.893, -8.187]");
-  cout << av.CrossProduct(ApricotVector("[6.984, -5.975, 4.778]")) << "\n\n\n";
-  av = ApricotVector("[-8.987, -9.838, 5.031]");
-  cout << av.GetParallelogramBetween(ApricotVector("[-4.268, -1.861, -8.866]")) << "\n\n\n";
-  av = ApricotVector("[1.5, 9.547, 3.691]");
-  cout << av.GetTriangleBetween(ApricotVector("[-6.007, 0.124, 5.772]")) << "\n\n\n";
-
+  ApricotMatrix am = ApricotMatrix("[[1, 0, -2], [-1, -4, 5], [1, 1, 1]]");
+  cout << am << "\n\n\n";
 
 
 
