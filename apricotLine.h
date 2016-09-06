@@ -24,13 +24,14 @@ class ApricotLine {
     ApricotVector ComputeIntersectionTo(ApricotLine al); 
     friend std::ostream &operator<<(std::ostream &, const ApricotLine &);
     ApricotVector GetNaturalVector() const;
+    ApricotVector GetBasePointVector() const;
     double GetEquationConstant() const;
     static unsigned int GetFirstNonZeroIndex(ApricotLine al);
   private:
     ApricotVector natVec; // Natural Vector
     ApricotVector baseVec; // Basepoint Vector
     double konstant_;
-    ApricotVector CalculuateBasePoint();
+    ApricotVector CalculateBasePoint();
 };
 
 #endif

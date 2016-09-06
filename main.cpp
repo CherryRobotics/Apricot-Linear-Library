@@ -51,11 +51,9 @@ void passed(std::string testname, bool passed) {
 
 
 int main(int argc, char* argv[]) {
-  ApricotLine al = ApricotLine(ApricotVector("[3, -2]"), 1);
-  cout << al;
-  al = ApricotLine(ApricotVector("[-6, 4]"), 0);
-  cout << al;
-
+  ApricotLine al = ApricotLine(ApricotVector("[2, 3]"), 6);
+  cout << al << "\n\n";
+  cout << al.GetBasePointVector();
 
 
   return 0;
