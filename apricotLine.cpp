@@ -1,6 +1,6 @@
 #include "apricotLine.h"
 ApricotLine::ApricotLine() {
-  
+
 }
 
 ApricotLine::ApricotLine(ApricotVector NaturalVector, double konstant) {
@@ -21,12 +21,35 @@ bool ApricotLine::LineEqualTo(ApricotLine al) {
   if (!this->ParallelTo(al))
     return false;
   // Grab the vector between the two points by subtracting them.
-//   ApricotVector 
+  ApricotVector diff = this->GetNaturalVector();
+  diff.sub(al.GetNaturalVector());
+  // now that diff is the vector between "this" and al,
+  // we can check if it's equal to,
+  if (!diff.OrthoganalTo(this->GetNaturalVector()))
+    return false;
+  if (!diff.OrthoganalTo(al.GetNaturalVector()))
+    return false;
   return true;
 }
 
 ApricotVector ApricotLine::ComputeIntersectionTo(ApricotLine al) {
-  return ApricotVector("[-1, -1]");
+  double x = 0;
+  double y = 0;
+  // Ax + By = K1 Equation 1
+  // Cx + Dy = K2 Equation 2
+  // Formulas for finding intersections for 2 var using natural vector ->>>
+  // x = (D*k1 - B*k2)/(A*D - B*C)
+  // y = (-C*k1 + A*k2)/(A*D - B*C)
+  std::vector<double> eq1 = this->GetNaturalVector().GetVector(); // A B
+  std::vector<double> eq2 = al.GetNaturalVector().GetVector(); // C D
+  double k1 = this->GetEquationConstant();
+  double k2 = al.GetEquationConstant();
+  x = (eq2.at(1) * k1 - eq1.at(1)*k2)/(eq1.at(0) * eq2.at(1) - eq1.at(1) * eq2.at(0));
+  y = (-1*eq2.at(0) * k1 - eq1.at(0)*k2)/(eq1.at(0) * eq2.at(1) - eq1.at(1) * eq2.at(0));
+  std::vector<double> returnvec;
+  returnvec.push_back(x);
+  returnvec.push_back(y);
+  return ApricotVector(returnvec);
 }
 
 ApricotVector ApricotLine::GetNaturalVector() const {

@@ -16,12 +16,12 @@ class ApricotLine {
     bool ParallelTo(ApricotLine al);
     bool LineEqualTo(ApricotLine al);
     // NOTE: This is kind of hard to do, since technically,
-    // There could be One point, infinitely many, or none at all. 
+    // There could be One point, infinitely many, or none at all.
     // So there's got to be a away to return an "infinitely many"
-    // vector as well as a "none at all" vector.... 
+    // vector as well as a "none at all" vector....
     // my normal method of "-1" error vector won't work since
     // -1, -1 could be a legitimate intersection..  :c sadlyf.
-    ApricotVector ComputeIntersectionTo(ApricotLine al); 
+    ApricotVector ComputeIntersectionTo(ApricotLine al);
     friend std::ostream &operator<<(std::ostream &, const ApricotLine &);
     ApricotVector GetNaturalVector() const;
     ApricotVector GetBasePointVector() const;
