@@ -6,4 +6,6 @@ including matrix and vector operations.
 Used udacity tutorial for reference: https://classroom.udacity.com/courses/ud953/lessons/4624329808/concepts/48972186200923
 
 
-Documentation coming soon.
+// int myArray = new Array[][];
+
+vector< vector<int > > apricotMatrix;

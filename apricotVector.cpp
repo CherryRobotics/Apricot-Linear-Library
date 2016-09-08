@@ -219,6 +219,8 @@ double ApricotVector::GetTriangleBetween(ApricotVector av) {
   return this->GetParallelogramBetween(av)/2;
 }
 
+//overloaded operators
+
 ostream& operator<<(std::ostream &output, const ApricotVector &A) {
     // Default accuracy is 3 due to fixed && setprecision
     std::vector<double> v = A.GetVector();
@@ -227,3 +229,25 @@ ostream& operator<<(std::ostream &output, const ApricotVector &A) {
     }
     return output;
 }
+
+//compares two vectors for equality. Vectors must be the same size.
+bool operator==(const ApricotVector &lhs, const ApricotVector &rhs) {
+  std::vector<double> leftVector = lhs.GetVector();
+  std::vector<double> rightVector = rhs.GetVector();
+
+  if (leftVector.size() != rightVector.size()) {
+    cout << "Size mismatch. Cannot compare vectors of two different sizes." << endl;
+    return false;
+  }
+
+  for (int i=0; i<leftVector.size(); i++) {
+    if (leftVector.at(i) != rightVector.at(i)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+
+
