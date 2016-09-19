@@ -33,6 +33,8 @@ class ApricotVector {
     ApricotVector CrossProduct(ApricotVector av);
     double GetParallelogramBetween(ApricotVector av);
     double GetTriangleBetween(ApricotVector av);
+    double at(int);
+    double size();
   private:
     std::vector<double> vec;
     // bool tolEquals(double value, double checknum, double tol=0.0000000001)
