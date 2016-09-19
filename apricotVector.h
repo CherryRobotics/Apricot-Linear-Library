@@ -26,6 +26,9 @@ class ApricotVector {
     std::vector<double> GetVector() const;
     friend std::ostream &operator<<(std::ostream &, const ApricotVector &);
     friend bool operator==(const ApricotVector&, const ApricotVector&);
+    friend ApricotVector operator+(ApricotVector&, const ApricotVector&);
+    friend ApricotVector operator-(ApricotVector&, const ApricotVector&);
+    friend ApricotVector operator*(ApricotVector&, const ApricotVector&);
 
     double GetMagnitude();
     double DotProduct(ApricotVector av);
