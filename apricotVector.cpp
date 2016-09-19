@@ -238,6 +238,52 @@ ostream& operator<<(std::ostream &output, const ApricotVector &A) {
     return output;
 }
 
+//overloaded addition operator
+ApricotVector operator+(ApricotVector &lhs, const ApricotVector &rhs) {
+  std::vector<double> leftVector = lhs.GetVector();
+  std::vector<double> rightVector = rhs.GetVector();
+
+  if (leftVector.size() != rightVector.size()) {
+    cout << "Size mismatch." << endl;
+    return -1;
+  }
+  for (unsigned int i = 0; i < rightVector.size(); i++) {
+    leftVector.at(i) += rightVector.at(i);
+  }
+  return leftVector;
+}
+
+//overloaded subtraction operator
+ApricotVector operator-(ApricotVector &lhs, const ApricotVector &rhs) {
+  std::vector<double> leftVector = lhs.GetVector();
+  std::vector<double> rightVector = rhs.GetVector();
+
+  if (leftVector.size() != rightVector.size()) {
+    cout << "Size mismatch." << endl;
+    return -1;
+  }
+  for (unsigned int i = 0; i < rightVector.size(); i++) {
+    leftVector.at(i) -= rightVector.at(i);
+  }
+  return leftVector;
+}
+
+//overloaded multiplication operator
+ApricotVector operator*(ApricotVector &lhs, const ApricotVector &rhs) {
+  std::vector<double> leftVector = lhs.GetVector();
+  std::vector<double> rightVector = rhs.GetVector();
+
+  if (leftVector.size() != rightVector.size()) {
+    cout << "Size mismatch." << endl;
+    return -1;
+  }
+  for (unsigned int i = 0; i < rightVector.size(); i++) {
+    leftVector.at(i) *= rightVector.at(i);
+  }
+  return leftVector;
+}
+
+
 //compares two vectors for equality. Vectors must be the same size.
 bool operator==(const ApricotVector &lhs, const ApricotVector &rhs) {
   std::vector<double> leftVector = lhs.GetVector();
