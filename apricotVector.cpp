@@ -68,43 +68,7 @@ ApricotVector::ApricotVector(std::string s) {
 ApricotVector::~ApricotVector() {
   // Nothing special for destructor.
 }
-void ApricotVector::add(std::vector<double> v) {
-  if (v.size() == vec.size()) {
-    for (unsigned int i = 0; i < v.size(); i++) {
-      vec.at(i) += v.at(i);
-    }
-  } else {
-    std::cout << "Vector size mismatch!";
-  }
-}
-void ApricotVector::add(ApricotVector av) {
-  if (av.size() == vec.size()) {
-    for (unsigned int i = 0; i < av.size(); i++) {
-      vec.at(i) += av.at(i);
-    }
-  } else {
-    std::cout << "Vector size mismatch!";
-  }
-}
-void ApricotVector::sub(std::vector<double> v) {
-  if (v.size() == vec.size()) {
-    for (unsigned int i = 0; i < v.size(); i++) {
-      vec.at(i) -= v.at(i);
-    }
-  } else {
-    std::cout << "Vector size mismatch!";
-  }
-}
 
-void ApricotVector::sub(ApricotVector av) {
-  if (av.size() == vec.size()) {
-    for (unsigned int i = 0; i < av.size(); i++) {
-      vec.at(i) -= av.at(i);
-    }
-  } else {
-    std::cout << "Vector size mismatch!";
-  }
-}
 void ApricotVector::normalize() {
   double normal = this->GetMagnitude();
   if (normal > 0) {

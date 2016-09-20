@@ -12,10 +12,6 @@ class ApricotVector {
     ApricotVector(std::string s);
     ~ApricotVector();
 
-    void add(std::vector<double> v);
-    void add(ApricotVector av);
-    void sub(std::vector<double> v);
-    void sub(ApricotVector av);
     void normalize();
     void scale(double scalar);
 
