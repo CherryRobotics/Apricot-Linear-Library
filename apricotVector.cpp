@@ -216,19 +216,21 @@ double ApricotVector::GetTriangleBetween(ApricotVector av) {
   return this->GetParallelogramBetween(av)/2;
 }
 
+//getter for vector. Avoids creating a new vector object in functions.
 double ApricotVector::at(int i) {
   if (vec.size() == 0 || i < 0 || vec.size() < i) {
     return -1;
   }
   return vec.at(i);
 }
-
+//gets the size of a vector
 double ApricotVector::size() {
   return vec.size();
 }
 
 //overloaded operators
 
+//output
 ostream& operator<<(std::ostream &output, const ApricotVector &A) {
     // Default accuracy is 3 due to fixed && setprecision
     std::vector<double> v = A.GetVector();
@@ -268,9 +270,23 @@ ApricotVector operator-(ApricotVector &lhs, const ApricotVector &rhs) {
   return leftVector;
 }
 
-//overloaded multiplication operator
-ApricotVector operator*(ApricotVector &lhs, const ApricotVector &rhs) {
-  std::vector<double> leftVector = lhs.GetVector();
+//overloaded subtraction operator for standard vector arguments
+ApricotVector operator-(std::vector<double> rhs, std::vector<double> lhs) {
+  std::vector<double> leftVector = lhs;
+  std::vector<double> rightVector = rhs;
+
+  if (leftVector.size() != rightVector.size()) {
+    cout << "Size mismatch." << endl;
+    return -1;
+  }
+  for (unsigned int i = 0; i < rightVector.size(); i++) {
+    leftVector.at(i) -= rightVector.at(i);
+  }
+  return leftVector;
+}
+
+ApricotVector operator-(ApricotVector &rhs, std::vector<double> lhs) {
+  std::vector<double> leftVector = lhs;
   std::vector<double> rightVector = rhs.GetVector();
 
   if (leftVector.size() != rightVector.size()) {
@@ -278,10 +294,50 @@ ApricotVector operator*(ApricotVector &lhs, const ApricotVector &rhs) {
     return -1;
   }
   for (unsigned int i = 0; i < rightVector.size(); i++) {
-    leftVector.at(i) *= rightVector.at(i);
+    leftVector.at(i) -= rightVector.at(i);
   }
   return leftVector;
 }
+
+ApricotVector operator-(std::vector<double> rhs, ApricotVector &lhs) {
+  std::vector<double> leftVector = lhs.GetVector();
+  std::vector<double> rightVector = rhs;
+
+  if (leftVector.size() != rightVector.size()) {
+    cout << "Size mismatch." << endl;
+    return -1;
+  }
+  for (unsigned int i = 0; i < rightVector.size(); i++) {
+    leftVector.at(i) -= rightVector.at(i);
+  }
+  return leftVector;
+}
+
+//overloaded multiplication operator
+ApricotVector operator*(ApricotVector &lhs, const ApricotVector &rhs) {
+  std::vector<double> leftVector = lhs.GetVector();
+  std::vector<double> rightVector = rhs.GetVector();
+  double dot = 0;
+
+  if (leftVector.size() != rightVector.size()) {
+    cout << "Size mismatch." << endl;
+    return -1;
+  }
+  for (unsigned int i = 0; i < rightVector.size(); i++) {
+    dot += leftVector.at(i) *= rightVector.at(i);
+  }
+  return dot;
+}
+
+//overloaded * with scalar functionality
+ApricotVector operator*(double scalar, ApricotVector &av) {
+  std::vector<double> vec = av.GetVector();
+  for(unsigned int i = 0; i < vec.size(); i++) {
+    vec.at(i)*=scalar;
+  }
+  return vec;
+}
+
 
 
 //compares two vectors for equality. Vectors must be the same size.
