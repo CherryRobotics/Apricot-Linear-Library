@@ -72,5 +72,9 @@ int main(int argc, char* argv[]) {
     cout << "FALSE" << endl;
   }
 
+  cout << "testing + overload" << endl;
+  ApricotVector v4 = v1 + v2;
+  cout << v4 << endl;
+
   return 0;
 }
