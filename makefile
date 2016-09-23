@@ -2,8 +2,8 @@
 CXX = /usr/bin/g++
 MAIN = main
 OUTPUT_FILENAME = ApricotTest
-CPP_FILES = apricotMatrix.cpp apricotVector.cpp
-H_FILES = apricotMatrix.h apricotVector.h
+CPP_FILES = apricotLine.cpp apricotMatrix.cpp apricotVector.cpp
+H_FILES = apricotLine.h apricotMatrix.h apricotVector.h
 CXXFLAGS = -Wall -std=c++11
 
 # Type 'make' to create the executable
@@ -17,4 +17,4 @@ ${MAIN}: ${MAIN}.cpp ${H_FILES} ${CPP_FILES}
 
 # Clean-Up the executable
 clean:
-	rm -rf ${MAIN}
+	rm -rf ${OUTPUT_FILENAME}

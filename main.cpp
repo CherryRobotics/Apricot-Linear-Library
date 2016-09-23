@@ -5,6 +5,8 @@
   *
   **/
 #include "apricotMatrix.h"
+#include "apricotLine.h"
+#include "apricotVector.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -49,15 +51,32 @@ void passed(std::string testname, bool passed) {
 
 
 int main(int argc, char* argv[]) {
-  ApricotVector av = ApricotVector("[8.462, 7.893, -8.187]");
-  cout << av.CrossProduct(ApricotVector("[6.984, -5.975, 4.778]")) << "\n\n\n";
-  av = ApricotVector("[-8.987, -9.838, 5.031]");
-  cout << av.GetParallelogramBetween(ApricotVector("[-4.268, -1.861, -8.866]")) << "\n\n\n";
-  av = ApricotVector("[1.5, 9.547, 3.691]");
-  cout << av.GetTriangleBetween(ApricotVector("[-6.007, 0.124, 5.772]")) << "\n\n\n";
+  ApricotLine al = ApricotLine(ApricotVector("[2, 3]"), 6);
+  cout << al << "\n\n";
+  cout << al.GetBasePointVector();
 
+  ApricotMatrix am = ApricotMatrix("[[1, 0, -2], [-1, -4, 5], [1, 1, 1]]");
+  cout << am << "\n\n\n";
 
+  ApricotVector v0 = ApricotVector("[1,2,3]");
+  ApricotVector v1 = ApricotVector("[1,2,3]");
+  ApricotVector v2 = ApricotVector("[9,8,2]");
+  ApricotVector v3 = ApricotVector("[1,2,3,7]");
 
+  cout << "Comparing equality, should return TRUE" << endl;
+  if (v0 == v1) {
+    cout << "TRUE" << endl;
+  }
+
+  cout << "Comparing equality, no return" << endl;
+  if (v0 == v2) {
+    cout << "FALSE" << endl;
+  }
+
+  cout << "Comparing equality with vectors of different sizes, should return size mismatch message" << endl;
+  if (v0 == v3) {
+    cout << "FALSE" << endl;
+  }
 
   return 0;
 }
