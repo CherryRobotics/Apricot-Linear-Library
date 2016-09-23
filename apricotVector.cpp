@@ -80,10 +80,9 @@ void ApricotVector::add(std::vector<double> v) {
   }
 }
 void ApricotVector::add(ApricotVector av) {
-  std::vector<double> v = av.GetVector();
-  if (v.size() == vec.size()) {
-    for (unsigned int i = 0; i < v.size(); i++) {
-      vec.at(i) += v.at(i);
+  if (av.size() == vec.size()) {
+    for (unsigned int i = 0; i < av.size(); i++) {
+      vec.at(i) += av.at(i);
     }
   } else {
     std::cout << "Vector size mismatch!";
@@ -100,10 +99,9 @@ void ApricotVector::sub(std::vector<double> v) {
 }
 
 void ApricotVector::sub(ApricotVector av) {
-  std::vector<double> v = av.GetVector();
-  if (v.size() == vec.size()) {
-    for (unsigned int i = 0; i < v.size(); i++) {
-      vec.at(i) -= v.at(i);
+  if (av.size() == vec.size()) {
+    for (unsigned int i = 0; i < av.size(); i++) {
+      vec.at(i) -= av.at(i);
     }
   } else {
     std::cout << "Vector size mismatch!";
@@ -167,8 +165,7 @@ double ApricotVector::DotProduct(ApricotVector av) {
   return dot;
 }
 double ApricotVector::getAngleBetween(ApricotVector av, bool inDegrees) {
-  std::vector<double> v = av.GetVector();
-  if (v.size() == vec.size()) {
+  if (av.size() == vec.size()) {
     double dot = this->DotProduct(av);
     double magav = av.GetMagnitude();
     double mag = this->GetMagnitude();
@@ -221,6 +218,19 @@ double ApricotVector::GetTriangleBetween(ApricotVector av) {
   return this->GetParallelogramBetween(av)/2;
 }
 
+double ApricotVector::at(int i) {
+  if (vec.size() == 0 || i < 0 || vec.size() < i) {
+    return -1;
+  }
+  return vec.at(i);
+}
+
+double ApricotVector::size() {
+  return vec.size();
+}
+
+//overloaded operators
+
 ostream& operator<<(std::ostream &output, const ApricotVector &A) {
     // Default accuracy is 3 due to fixed && setprecision
     std::vector<double> v = A.GetVector();
@@ -229,3 +239,25 @@ ostream& operator<<(std::ostream &output, const ApricotVector &A) {
     }
     return output;
 }
+
+//compares two vectors for equality. Vectors must be the same size.
+bool operator==(const ApricotVector &lhs, const ApricotVector &rhs) {
+  std::vector<double> leftVector = lhs.GetVector();
+  std::vector<double> rightVector = rhs.GetVector();
+
+  if (leftVector.size() != rightVector.size()) {
+    cout << "Size mismatch. Cannot compare vectors of two different sizes." << endl;
+    return false;
+  }
+
+  for (int i=0; i<leftVector.size(); i++) {
+    if (leftVector.at(i) != rightVector.at(i)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+
+
