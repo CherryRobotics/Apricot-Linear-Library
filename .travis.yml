@@ -15,4 +15,4 @@ before_install:
   - cp -r $CI_SOURCE_PATH ./
 
 script:
-  - docker run --rm -it --privileged -v /tmp:/tmp kadyncbr/xenial "/tmp/Apricot-Linear-Library/ci-build-test"
+  - docker run --rm -it --entrypoint /bin/bash /tmp/Apricot-Linear-Library/ci-build-test --privileged -v /tmp:/tmp kadyncbr/xenial 
