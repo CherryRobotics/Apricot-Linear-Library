@@ -22,7 +22,7 @@ bool ApricotLine::LineEqualTo(ApricotLine al) {
     return false;
   // Grab the vector between the two points by subtracting them.
   ApricotVector diff = this->GetNaturalVector();
-  diff.sub(al.GetNaturalVector());
+  diff = diff - al.GetNaturalVector();
   // now that diff is the vector between "this" and al,
   // we can check if it's equal to,
   if (!diff.OrthoganalTo(this->GetNaturalVector()))
