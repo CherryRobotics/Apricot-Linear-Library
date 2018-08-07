@@ -1,0 +1,18 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+env:
+  global:
+    - CI_SOURCE_PATH=$(pwd)
+
+before_install:
+  - docker pull kadyncbr/xenial
+  - cd /tmp
+  - cp -r $CI_SOURCE_PATH ./
+
+script:
+  - docker run --rm -it --entrypoint=/bin/bash --privileged -v /tmp:/tmp kadyncbr/xenial /tmp/Apricot-Linear-Library/ci-build-test

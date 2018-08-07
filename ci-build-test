@@ -1,0 +1,10 @@
+# CI build tests.
+
+
+# Go into the directory and build.
+cd /tmp/Apricot-Linear-Library
+cmake .
+make
+
+# Run the main program
+./bin/apricot
